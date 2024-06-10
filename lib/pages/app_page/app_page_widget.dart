@@ -87,63 +87,55 @@ class _AppPageWidgetState extends State<AppPageWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: Column(
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Expanded(
-                child: StreamBuilder<List<BeAwareRecord>>(
-                  stream: queryBeAwareRecord(),
-                  builder: (context, snapshot) {
-                    // Customize what your widget looks like when it's loading.
-                    if (!snapshot.hasData) {
-                      return Center(
-                        child: SizedBox(
-                          width: 50.0,
-                          height: 50.0,
-                          child: CircularProgressIndicator(
-                            valueColor: AlwaysStoppedAnimation<Color>(
-                              FlutterFlowTheme.of(context).primary,
-                            ),
-                          ),
-                        ),
-                      );
-                    }
-                    List<BeAwareRecord> googleMapBeAwareRecordList =
-                        snapshot.data!;
-                    return FlutterFlowGoogleMap(
-                      controller: _model.googleMapsController,
-                      onCameraIdle: (latLng) =>
-                          setState(() => _model.googleMapsCenter = latLng),
-                      initialLocation: _model.googleMapsCenter ??=
-                          const LatLng(51.58656, 4.77596),
-                      markers: googleMapBeAwareRecordList
-                          .map((e) => e.location.geopoint)
-                          .withoutNulls
-                          .toList()
-                          .map(
-                            (marker) => FlutterFlowMarker(
-                              marker.serialize(),
-                              marker,
-                            ),
-                          )
-                          .toList(),
-                      markerColor: GoogleMarkerColor.cyan,
-                      mapType: MapType.normal,
-                      style: GoogleMapStyle.standard,
-                      initialZoom: 13.0,
-                      allowInteraction: true,
-                      allowZoom: true,
-                      showZoomControls: false,
-                      showLocation: true,
-                      showCompass: false,
-                      showMapToolbar: false,
-                      showTraffic: true,
-                      centerMapOnMarkerTap: true,
-                    );
-                  },
-                ),
-              ),
-            ],
+          child: StreamBuilder<List<BeAwareRecord>>(
+            stream: queryBeAwareRecord(),
+            builder: (context, snapshot) {
+              // Customize what your widget looks like when it's loading.
+              if (!snapshot.hasData) {
+                return Center(
+                  child: SizedBox(
+                    width: 50.0,
+                    height: 50.0,
+                    child: CircularProgressIndicator(
+                      valueColor: AlwaysStoppedAnimation<Color>(
+                        FlutterFlowTheme.of(context).primary,
+                      ),
+                    ),
+                  ),
+                );
+              }
+              List<BeAwareRecord> googleMapBeAwareRecordList = snapshot.data!;
+              return FlutterFlowGoogleMap(
+                controller: _model.googleMapsController,
+                onCameraIdle: (latLng) =>
+                    setState(() => _model.googleMapsCenter = latLng),
+                initialLocation: _model.googleMapsCenter ??=
+                    const LatLng(51.58656, 4.77596),
+                markers: googleMapBeAwareRecordList
+                    .map((e) => e.location.geopoint)
+                    .withoutNulls
+                    .toList()
+                    .map(
+                      (marker) => FlutterFlowMarker(
+                        marker.serialize(),
+                        marker,
+                      ),
+                    )
+                    .toList(),
+                markerColor: GoogleMarkerColor.cyan,
+                mapType: MapType.normal,
+                style: GoogleMapStyle.standard,
+                initialZoom: 13.0,
+                allowInteraction: true,
+                allowZoom: true,
+                showZoomControls: false,
+                showLocation: true,
+                showCompass: false,
+                showMapToolbar: false,
+                showTraffic: true,
+                centerMapOnMarkerTap: true,
+              );
+            },
           ),
         ),
       ),
