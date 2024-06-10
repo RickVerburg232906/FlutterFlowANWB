@@ -92,6 +92,13 @@ class _AppPageWidgetState extends State<AppPageWidget> {
                 setState(() => _model.googleMapsCenter = latLng),
             initialLocation: _model.googleMapsCenter ??=
                 const LatLng(51.58656, 4.77596),
+            circles: {
+              Circle(
+                circleId: CircleId("1"),
+                center: const LatLng(51.58656, 4.77596),
+                radius: 430,
+              ) // Circle
+            }
             markerColor: GoogleMarkerColor.cyan,
             mapType: MapType.normal,
             style: GoogleMapStyle.standard,
