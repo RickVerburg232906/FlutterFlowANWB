@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "110074370685",
+    "project_id": "customer-a-n-w-b-app-j1vp1c",
+    "storage_bucket": "customer-a-n-w-b-app-j1vp1c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:110074370685:android:ccc9dd37ac2e6dac522f14",
+        "android_client_info": {
+          "package_name": "com.mycompany.customeranwbapp"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDhQLADZgb6ZBQDAS2dUS4wJfXSCd0aA1k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
